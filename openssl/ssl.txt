@@ -8,3 +8,7 @@ Creating the certificate
 Self-Signing the Certificate
 •	openssl x509 -req -in tls.csr -CA myca.pem -CAkey myca.key -CAcreateserial -out tls.crt -days 1650 -sha256
 
+openssl req -x509 -nodes -newkey rsa:2048 -days 365 \
+  -keyout quart.key -out quart.crt \
+  -subj "/C=US/ST=NorthCarolina/L=Raleigh/O=RedHat/CN=quart.apps.domain3.example.com" \
+  -addext "subjectAltName=DNS:quart.apps.domain3.example.com"
