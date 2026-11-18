@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: example-range
+  namespace: darpa
+spec:
+  limits:
+    - type: Pod
+      min:
+        memory: "5Mi"
+        cpu: "5m"
+      max:
+        memory: "300Mi"
+        cpu: "300m"
+    - type: Container
+      min: 
+        memory: "5Mi"
+        cpu: "5m"
+      max: 
+        memory: "300Mi"
+        cpu: "300m"
+      defaultRequest:
+        memory: "100Mi"
+        cpu: "100m"
+
