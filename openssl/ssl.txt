@@ -1,0 +1,10 @@
+Creating the CA
+•	Mkdir ~/openssl
+•	Openssl genrsa –des3 –out myCA.key 2048
+•	openssl req -x509 –new –nodes –key myCA.key –sha256 –days 3650 –out myCA.pem
+Creating the certificate
+•	Openssl genrsa –out tls.key 2048
+•	Openssl req –new –key tls.key –out tls.csr # make sure the CN matches the DNS name of oc which is project.apps-crc.testing
+Self-Signing the Certificate
+•	openssl x509 -req -in tls.csr -CA myca.pem -CAkey myca.key -CAcreateserial -out tls.crt -days 1650 -sha256
+
