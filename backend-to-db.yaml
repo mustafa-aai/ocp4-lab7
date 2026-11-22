@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: backend-to-db
+  namespace: three-tier
+spec:
+  ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            deployment: backend
+  policyTypes:
+    - Ingress
+  podSelector:
+    matchLabels:
+      deployment: mysql

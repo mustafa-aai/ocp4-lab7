@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata: 
+  name: frontend-to-backend
+  namespace: three-tier
+spec:
+  ingress:
+    - from:
+      - podSelector:
+          matchLabels: 
+            deployment: frontend
+  podSelector:
+    matchLabels:
+      deployment: backend
+  policyTypes:
+    - Ingress 
